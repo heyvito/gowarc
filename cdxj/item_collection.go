@@ -29,7 +29,7 @@ func (i ItemCollection) AllByURL(url string) ItemCollection {
 
 func (i ItemCollection) AllURLs() []string {
 	var urls []string
-	var set map[string]struct{}
+	set := map[string]struct{}{}
 	for _, item := range i {
 		if _, ok := set[item.URL]; !ok {
 			set[item.URL] = struct{}{}
