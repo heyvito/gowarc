@@ -12,13 +12,15 @@ func (i ItemCollection) Find(predicate func(*Item) bool) *Item {
 }
 
 func (i ItemCollection) ByURL(url string) *Item {
-	return i.Find(func(item *Item) bool { return item.URL == url })
+	return i.Find(func(item *Item) bool {
+		return item.SymbolicURL == url
+	})
 }
 
 func (i ItemCollection) AllByURL(url string) ItemCollection {
 	var col ItemCollection
 	for _, item := range i {
-		if item.URL == url {
+		if item.SymbolicURL == url {
 			col = append(col, item)
 		}
 	}
